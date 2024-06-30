@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Scanner;
 public class Mergesort {
     public static void mergesort(int arr[], int l, int r) {
         if (l < r) {
