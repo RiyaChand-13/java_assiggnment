@@ -1,0 +1,52 @@
+import java.util.*;
+
+
+public class QuickSort {
+
+    public static void quicksort(int[] array, int p, int q) {
+        if (p < q) {
+            // Partition the array and get the pivot index
+            int j = partition(array, p, q);
+            quicksort(array, p, j - 1);
+            quicksort(array, j + 1, q);
+        }
+    }
+
+    public static int partition(int[] array, int p, int q) {
+        // Choose the pivot element (typically the last element)
+        int pivot = array[q];
+        int i = p - 1; // Index of smaller element
+
+        for (int j = p; j < q; j++) {
+            // If current element is smaller than the pivot
+            if (array[j] <= pivot) {
+                i++;
+                // Swap array[i] and array[j]
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+            }
+        }
+
+        // Swap array[i+1] and array[q] (or the pivot)
+        int temp = array[i + 1];
+        array[i + 1] = array[q];
+        array[q] = temp;
+
+        // Return the partition index
+        return i + 1;
+    }
+
+        public static void main(String[] args) {
+
+            int[] a = {5, 7, 2, 9, 3, 10};
+            System.out.println("Unsorted Array:");
+            System.out.println(Arrays.toString(a));
+
+            int size = a.length;
+            quicksort(a, 0, size - 1);
+
+            System.out.println("Sorted Array in Ascending Order:");
+            System.out.println(Arrays.toString(a));
+        }
+    }
